@@ -1,12 +1,12 @@
 // ** React Imports
-import React from "react";
-import ReactDOM from "react-dom/client";
+import React from 'react'
+import ReactDOM from 'react-dom/client'
 
 // ** Style Imports
-import "./style/global.css";
+import './style/global.css'
 
 // ** Component Imports
-import App from "./App";
+import App from './App'
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+const root = ReactDOM.createRoot(document.getElementById('root'))
+root.render(<App />)
