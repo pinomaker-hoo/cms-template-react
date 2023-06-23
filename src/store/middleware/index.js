@@ -1,5 +1,6 @@
 // ** Redux Imports
 import { isRejectedWithValue } from '@reduxjs/toolkit'
+import { api } from 'services'
 
 export const rtkQueryErrorLogger = (_api) => (next) => (action) => {
   if (isRejectedWithValue(action)) {
