@@ -10,6 +10,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 
 // ** Component Imports
 import App from './App'
+import UseLayout from 'layouts'
 
 // ** Redux Imports
 import { store } from 'store'
@@ -21,7 +22,7 @@ root.render(
     <ThemeProvider theme={theme}>
       <GlobalStyles styles={{ backgroundColor: 'blue' }} />
       <CssBaseline />
-      <App />
+      <UseLayout children={<App />} />
     </ThemeProvider>
   </Provider>,
 )
