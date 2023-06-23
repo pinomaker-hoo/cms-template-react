@@ -14,7 +14,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx}\""
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx}\"",
+    "lint": "eslint --fix \"src/**/*.{ts,tsx,js,jsx}\""
   },
   "eslintConfig": {
     "extends": [
@@ -35,6 +36,9 @@
     ]
   },
   "devDependencies": {
+    "eslint": "^8.43.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-react": "^7.32.2",
     "prettier": "^2.8.8"
   }
 }
