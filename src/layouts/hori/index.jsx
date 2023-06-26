@@ -25,6 +25,10 @@ const Hori = () => {
     <AppBarWrapper position="fixed">
       <Toolbar sx={{ backgroundColor: 'white' }}>
         <Grid container spacing={6}>
+          <Grid item xs={11} sx={{ mt: 3 }} />
+          <Grid item xs={1} sx={{ mt: 3 }}>
+            <Avatar src="/broken-image.jpg" />
+          </Grid>
           <Grid item xs={1.5} />
           <Grid item xs={4}>
             <Breadcrumbs aria-label="breadcrumb">
@@ -40,10 +44,6 @@ const Hori = () => {
               </Link>
               <Typography color="text.primary">Breadcrumbs</Typography>
             </Breadcrumbs>
-          </Grid>
-          <Grid item xs={5.5} />
-          <Grid item xs={1}>
-            <Avatar src="/broken-image.jpg" />
           </Grid>
         </Grid>
       </Toolbar>
