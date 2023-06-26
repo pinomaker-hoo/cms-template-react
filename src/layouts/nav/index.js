@@ -8,6 +8,7 @@ const navListItem = [
   {
     listIcon: <AccessibilityNewIcon />,
     listText: '홈',
+    href: '/',
     isSubMenuOpen: false,
   },
   {
@@ -17,10 +18,12 @@ const navListItem = [
       {
         listIcon: <AdbIcon />,
         listText: '하위 메뉴 1',
+        href: '/',
       },
       {
         listIcon: <AdbIcon />,
         listText: '하위 메뉴 2',
+        href: '/',
       },
     ],
     isSubMenuOpen: false,
@@ -32,10 +35,12 @@ const navListItem = [
       {
         listIcon: <AirportShuttleIcon />,
         listText: '하위 메뉴 1',
+        href: '/',
       },
       {
         listIcon: <AirportShuttleIcon />,
         listText: '하위 메뉴 2',
+        href: '/',
       },
     ],
     isSubMenuOpen: false,
@@ -44,6 +49,7 @@ const navListItem = [
     listIcon: <ApprovalIcon />,
     listText: '연락처',
     isSubMenuOpen: false,
+    href: '/',
   },
 ]
 
