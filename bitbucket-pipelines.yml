@@ -1,0 +1,37 @@
+image: atlassian/default-image:3
+pipelines:
+  branches:
+    develop:
+      - step:
+          name: Build and Test
+          script:
+            - echo "Docker Build and Push"
+            - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
+            - docker build --no-cache --rm -f Dockerfile -t aiaracorp1/aiara-cms-template-js:latest .
+            - docker push aiaracorp1/aiara-cms-template-js:latest
+          services:
+            - docker
+          caches:
+            - docker
+        options:
+          docker: true
+
+      - step:
+          name: Deploy to Production
+          deployment: Production
+          script:
+            - chmod 400 luxrobo-dev.pem
+            - mkdir -p ~/.ssh
+            - touch ~/.ssh/known_hosts
+            - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
+            - echo "$DEPLOY_SSH_KEY" > $HOME/key.pem
+            - chmod 400 $HOME/key.pem
+            - ssh -i $HOME/key.pem ubuntu@$SSH_HOST "
+              sudo docker container rm -f luxrobo-cloud-was &&
+              sudo docker image rm aiaracorp1/aiara-cms-template-js:latest &&
+              sudo docker pull aiaracorp1/aiara-cms-template-js:latest &&
+              sudo docker run -d --rm -p 80:80 --name aiara-cms aiaracorp1/aiara-cms-template-js:latest
+              "
+            - echo 'DONE DEPLOY LIVE'
+          services:
+            - docker
