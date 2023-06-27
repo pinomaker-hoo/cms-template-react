@@ -23,9 +23,8 @@ pipelines:
             - mkdir -p ~/.ssh
             - touch ~/.ssh/known_hosts
             - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
-            - echo "$DEPLOY_SSH_KEY" > $HOME/key.pem
-            - chmod 400 $HOME/key.pem
-            - ssh -i $HOME/key.pem ubuntu@$SSH_HOST "
+            - chmod 400 aiara-cms.pem
+            - ssh -i aiara-cms.pem ubuntu@$SSH_HOST "
               sudo docker container rm -f luxrobo-cloud-was &&
               sudo docker image rm aiaracorp1/aiara-cms-template-js:latest &&
               sudo docker pull aiaracorp1/aiara-cms-template-js:latest &&
