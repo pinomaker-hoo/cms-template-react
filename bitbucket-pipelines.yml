@@ -25,7 +25,7 @@ pipelines:
             - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
             - chmod 400 aiara-cms.pem
             - ssh -i aiara-cms.pem ubuntu@$SSH_HOST "
-              sudo docker container rm -f luxrobo-cloud-was &&
+              sudo docker container rm -f aiara-cms-template-js &&
               sudo docker image rm aiaracorp1/aiara-cms-template-js:latest &&
               sudo docker pull aiaracorp1/aiara-cms-template-js:latest &&
               sudo docker run -d --rm -p 80:80 --name aiara-cms aiaracorp1/aiara-cms-template-js:latest
