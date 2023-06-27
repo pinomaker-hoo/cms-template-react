@@ -21,11 +21,11 @@ import SubMenu from 'layouts/subMenu'
 import theme from 'theme'
 
 const DrawerPaper = styled(Drawer)({
-  width: 400,
+  width: 250,
 })
 
 const SidebarWrapper = styled('div')(({ theme }) => ({
-  width: 400,
+  width: 250,
   flexShrink: 0,
 }))
 

@@ -20,7 +20,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <Provider store={store}>
     <ThemeProvider theme={theme}>
-      <GlobalStyles styles={{ backgroundColor: 'blue' }} />
+      <GlobalStyles />
       <CssBaseline />
       <UseLayout children={<App />} />
     </ThemeProvider>
