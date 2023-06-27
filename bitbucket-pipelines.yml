@@ -20,7 +20,6 @@ pipelines:
           name: Deploy to Production
           deployment: Production
           script:
-            - chmod 400 luxrobo-dev.pem
             - mkdir -p ~/.ssh
             - touch ~/.ssh/known_hosts
             - ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
