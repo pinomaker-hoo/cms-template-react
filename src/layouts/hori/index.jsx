@@ -1,17 +1,17 @@
+// ** React Imports
+import { useState } from 'react'
+
 // ** MUI Imports
 import {
   styled,
   AppBar,
   Toolbar as MuiToolbar,
-  Typography,
-  Breadcrumbs,
+  Menu,
+  MenuItem,
   Grid,
   Avatar,
-  Link,
+  Button,
 } from '@mui/material'
-
-// ** Nav Imports
-import navListItem from 'layouts/nav'
 
 const Toolbar = styled(MuiToolbar)(({ theme }) => ({
   ...theme.mixins.toolbar,
@@ -25,29 +25,34 @@ const AppBarWrapper = styled(AppBar)({
 })
 
 const Hori = () => {
+  const [anchorEl, setAnchorEl] = useState(null)
+  const open = Boolean(anchorEl)
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget)
+  }
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
   return (
     <AppBarWrapper position="fixed">
       <Toolbar sx={{ backgroundColor: 'white' }}>
         <Grid container spacing={6}>
           <Grid item xs={11} sx={{ mt: 3 }} />
           <Grid item xs={1} sx={{ mt: 3 }}>
-            <Avatar src="/broken-image.jpg" />
-          </Grid>
-          <Grid item xs={1.5} />
-          <Grid item xs={4}>
-            <Breadcrumbs aria-label="breadcrumb">
-              <Link underline="hover" color="inherit" href="/">
-                MUI
-              </Link>
-              <Link
-                underline="hover"
-                color="inherit"
-                href="/material-ui/getting-started/installation/"
-              >
-                Core
-              </Link>
-              <Typography color="text.primary">Breadcrumbs</Typography>
-            </Breadcrumbs>
+            <Button onClick={handleClick}>
+              <Avatar src="/broken-image.jpg" />
+            </Button>
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps={{
+                'aria-labelledby': 'basic-button',
+              }}
+            >
+              <MenuItem onClick={handleClose}>Logout</MenuItem>
+            </Menu>
           </Grid>
         </Grid>
       </Toolbar>
