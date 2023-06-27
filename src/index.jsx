@@ -15,14 +15,17 @@ import UseLayout from 'layouts'
 // ** Redux Imports
 import { store } from 'store'
 import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <Provider store={store}>
-    <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <CssBaseline />
-      <UseLayout children={<App />} />
-    </ThemeProvider>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <CssBaseline />
+        <UseLayout children={<App />} />
+      </ThemeProvider>
+    </BrowserRouter>
   </Provider>,
 )

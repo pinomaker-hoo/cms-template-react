@@ -1,5 +1,12 @@
+// ** Router Imports
+import { useLocation } from 'react-router-dom'
+
+// ** Mui Imports
 import { styled } from '@mui/material'
+
+// ** Component Imports
 import VerticalNavigation from './vertical'
+import { useMemo } from 'react'
 
 const LayoutWrapper = styled('div')({
   display: 'flex',
@@ -22,7 +29,20 @@ const Content = styled('div')({
   padding: '1rem',
 })
 
+const hiddenList = ['/login']
+
 const UseLayout = ({ children }) => {
+  const { pathname } = useLocation()
+
+  const isHidden = useMemo(
+    () => (hiddenList.includes(pathname) ? true : false),
+    [pathname],
+  )
+
+  if (isHidden) {
+    return <>{children}</>
+  }
+
   return (
     <LayoutWrapper>
       <Header>

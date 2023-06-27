@@ -15,6 +15,7 @@
   },
   "plugins": ["react", "import"],
   "rules": {
+    "import/named": "off",
     "no-unused-vars": 1,
     "react/no-children-prop": 1,
     "react/prop-types": 0,
