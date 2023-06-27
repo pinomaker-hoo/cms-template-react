@@ -40,7 +40,7 @@ const Hori = () => {
           <Grid item xs={11} sx={{ mt: 3 }} />
           <Grid item xs={1} sx={{ mt: 3 }}>
             <Button onClick={handleClick}>
-              <Avatar src="/broken-image.jpg" />
+              <Avatar src="/image/avatar.png" sx={{ width: 50, height: 50 }} />
             </Button>
             <Menu
               id="basic-menu"
