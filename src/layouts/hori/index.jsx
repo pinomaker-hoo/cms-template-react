@@ -13,6 +13,13 @@ import {
   Button,
 } from '@mui/material'
 
+// ** Router Imports
+import { useNavigate } from 'react-router-dom'
+
+// ** Redux Imports
+import { useDispatch } from 'react-redux'
+import { logout } from 'store/app/auth'
+
 const Toolbar = styled(MuiToolbar)(({ theme }) => ({
   ...theme.mixins.toolbar,
   display: 'flex',
@@ -25,6 +32,8 @@ const AppBarWrapper = styled(AppBar)({
 })
 
 const Hori = () => {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
   const handleClick = (event) => {
@@ -33,6 +42,12 @@ const Hori = () => {
   const handleClose = () => {
     setAnchorEl(null)
   }
+
+  const handleLogout = () => {
+    dispatch(logout)
+    navigate('/login')
+  }
+
   return (
     <AppBarWrapper position="fixed">
       <Toolbar sx={{ backgroundColor: 'white' }}>
@@ -51,7 +66,7 @@ const Hori = () => {
                 'aria-labelledby': 'basic-button',
               }}
             >
-              <MenuItem onClick={handleClose}>Logout</MenuItem>
+              <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>
           </Grid>
         </Grid>

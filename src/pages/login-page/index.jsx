@@ -6,10 +6,13 @@ import LoginPageView from 'pages/login-page/login-page'
 
 // ** Otheer Imports
 import useInput from 'hooks/useInput'
+import { useDispatch } from 'react-redux'
+import { updateUser } from 'store/app/auth'
 
 const LoginPage = () => {
   const [user, setUser] = useInput({ username: 'admin', password: '1234' })
 
+  const dispatch = useDispatch()
   const navigate = useNavigate()
 
   const handleOnKeyPress = (e) => {
@@ -32,6 +35,14 @@ const LoginPage = () => {
     }
 
     if (user.username === 'admin' && user.password === '1234') {
+      dispatch(
+        updateUser({
+          email: 'admin',
+          name: '관리자',
+          accessToken: '1234',
+          refreshToken: '1234',
+        }),
+      )
       navigate('/')
     }
   }
