@@ -7,7 +7,14 @@ import {
   DialogContentText,
 } from '@mui/material'
 
-const BasicModal = ({ state, closeEvent, message, title }) => {
+interface Props {
+  state: boolean
+  closeEvent(): void
+  message: string
+  title: string
+}
+
+const BasicModal = ({ state, closeEvent, message, title }: Props) => {
   return (
     <Dialog
       open={state}

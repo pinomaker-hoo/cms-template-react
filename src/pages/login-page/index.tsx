@@ -2,12 +2,12 @@
 import { useNavigate } from 'react-router-dom'
 
 // ** Other View Import
-import LoginPageView from 'pages/login-page/login-page'
+import LoginPageView from './login-page'
 
 // ** Otheer Imports
-import useInput from 'hooks/useInput'
+import useInput from '../../hooks/useInput'
 import { useDispatch } from 'react-redux'
-import { updateUser } from 'store/app/auth'
+import { updateUser } from '../../store/app/auth'
 
 const LoginPage = () => {
   const [user, setUser] = useInput({ username: 'admin', password: '1234' })
@@ -15,7 +15,7 @@ const LoginPage = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const handleOnKeyPress = (e) => {
+  const handleOnKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       login()
     }
@@ -43,7 +43,7 @@ const LoginPage = () => {
           refreshToken: '1234',
         }),
       )
-      navigate('/')
+      navigate('/user')
     }
   }
 

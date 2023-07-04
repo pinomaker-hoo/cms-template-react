@@ -1,7 +1,14 @@
 // ** MUI Components
 import { Grid, Button, TextField, Box, Typography } from '@mui/material'
 
-const LoginPageView = ({ user, setUser, login, handleOnKeyPress }) => {
+interface Props {
+  user: { username: string; password: string }
+  setUser: () => void
+  login: () => void
+  handleOnKeyPress: (e: React.KeyboardEvent<HTMLInputElement>) => void
+}
+
+const LoginPageView = ({ user, setUser, login, handleOnKeyPress }: Props) => {
   return (
     <Box
       className="content-center"
@@ -24,10 +31,10 @@ const LoginPageView = ({ user, setUser, login, handleOnKeyPress }) => {
       >
         <Grid container spacing={6}>
           <Grid item xs={12} sx={{ textAlign: 'center' }}>
-            <img src="/image/logo.png" />
+            <img src="/image/logo.png" width={400} />
           </Grid>
           <Grid item xs={12} sx={{ textAlign: 'center' }}>
-            <Typography variant="h5">Aiara 관리자 페이지</Typography>
+            <Typography variant="h5">EXOCOM 관리자 페이지</Typography>
           </Grid>
           <Grid item xs={12}>
             <TextField
@@ -37,6 +44,7 @@ const LoginPageView = ({ user, setUser, login, handleOnKeyPress }) => {
               name="username"
               onChange={setUser}
               onKeyDown={handleOnKeyPress}
+              placeholder="아이디를 입력하세요"
             />
           </Grid>
           <Grid item xs={12}>
@@ -48,6 +56,7 @@ const LoginPageView = ({ user, setUser, login, handleOnKeyPress }) => {
               name="password"
               onChange={setUser}
               onKeyDown={handleOnKeyPress}
+              placeholder="비밀번호를 입력하세요"
             />
           </Grid>
           <Grid item xs={12}>

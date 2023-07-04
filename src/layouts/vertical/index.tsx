@@ -1,6 +1,8 @@
 // ** React Imports
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 
+// ** Router Imports
+import { Link, useLocation } from 'react-router-dom'
 // ** Mui Imports
 import {
   Divider,
@@ -10,15 +12,13 @@ import {
   styled,
   ListItemText,
   Box,
-  Avatar,
   ListItem,
 } from '@mui/material'
 
 // ** Component Imports
-import navListItem from 'layouts/nav'
-import Hori from 'layouts/hori'
-import SubMenu from 'layouts/subMenu'
-import theme from 'theme'
+import navListItem from '../nav'
+import Hori from '../hori'
+import SubMenu from '../subMenu'
 
 const DrawerPaper = styled(Drawer)({
   width: 250,
@@ -30,14 +30,27 @@ const SidebarWrapper = styled('div')(({ theme }) => ({
 }))
 
 const VerticalNavigation = () => {
-  const [listItems, setListItems] = useState(navListItem)
+  const { pathname } = useLocation()
+  const [listItems, setListItems] = useState<any[]>(navListItem)
 
-  const handleSubMenuToggle = (index) => {
+  const handleSubMenuToggle = (index: any) => {
     const updatedListItems = [...listItems]
     updatedListItems[index].isSubMenuOpen =
       !updatedListItems[index].isSubMenuOpen
     setListItems(updatedListItems)
   }
+
+  useEffect(() => {
+    const updatedListItems = listItems.map((item) => {
+      if (item.href === '/' + pathname.split('/')[1]) {
+        return { ...item, isSubMenuOpen: true }
+      }
+
+      return { ...item, isSubMenuOpen: false }
+    })
+
+    setListItems(updatedListItems)
+  }, [pathname])
 
   return (
     <SidebarWrapper>
@@ -45,18 +58,18 @@ const VerticalNavigation = () => {
       <DrawerPaper variant="permanent">
         <Box
           component="div"
-          sx={{ width: 250, backgroundColor: '#C63327', height: '100%' }}
+          sx={{
+            width: 250,
+            backgroundColor: '#C63327',
+            height: '100%',
+            overflow: 'hidden',
+          }}
         >
-          <Avatar
-            src="https://i.ibb.co/rx5DFbs/avatar.png"
-            alt="Juaneme8"
-            sx={{
-              margin: '0.5rem auto',
-              padding: '1rem',
-              width: theme.spacing(13),
-              height: theme.spacing(13),
-            }}
-          />
+          <Box sx={{ textAlign: 'center', py: 3 }}>
+            <Link to="/">
+              <img src="/image/logo.png" width={200} />
+            </Link>
+          </Box>
           <Divider />
           <List>
             {listItems.map((listItem, index) => (

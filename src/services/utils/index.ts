@@ -11,7 +11,11 @@ const baseQuery = fetchBaseQuery({
 })
 
 const mutex = new Mutex()
-export const customFetchBase = async (args, api, extraOptions) => {
+export const customFetchBase = async (
+  args: any,
+  api: any,
+  extraOptions: any,
+) => {
   await mutex.waitForUnlock()
   let result = await baseQuery(args, api, extraOptions)
   if (result.error?.status === 401) {

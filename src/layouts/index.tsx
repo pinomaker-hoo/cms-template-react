@@ -29,9 +29,9 @@ const Content = styled('div')({
   padding: '1rem',
 })
 
-const hiddenList = ['/login']
+const hiddenList = ['/']
 
-const UseLayout = ({ children }) => {
+const UseLayout = ({ children }: any) => {
   const { pathname } = useLocation()
 
   const isHidden = useMemo(

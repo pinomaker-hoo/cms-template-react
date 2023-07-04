@@ -2,17 +2,17 @@
 import { Route, Routes } from 'react-router-dom'
 
 // ** Component Imports
-import LoginPage from 'pages/login-page'
+import LoginPage from './pages/login-page'
 import { ProtectRoute, PublicRoute } from 'utils/protect-route'
 
 const App = () => {
   return (
     <Routes>
       <Route element={<PublicRoute />}>
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/" element={<LoginPage />} />
       </Route>
       <Route element={<ProtectRoute />}>
-        <Route path="/" element={<h1>Hello world</h1>} />
+        <Route path="/test" element={<h1>Hello world</h1>} />
       </Route>
     </Routes>
   )

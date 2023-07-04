@@ -2,6 +2,11 @@
 import { createTheme } from '@mui/material'
 
 const theme = createTheme({
+  palette: {
+    background: {
+      default: '#FFFAFA',
+    },
+  },
   typography: {
     button: {
       fontWeight: 600,

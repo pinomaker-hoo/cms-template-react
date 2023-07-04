@@ -7,6 +7,16 @@ import { Box, Grid, styled, Typography } from '@mui/material'
 // ** Third Party Imports
 import { useDropzone } from 'react-dropzone'
 
+interface FileProp {
+  name: string
+  type: string
+  size: number
+}
+
+interface Props {
+  setData: any
+}
+
 const Img = styled('img')(({ theme }) => ({
   [theme.breakpoints.up('md')]: {
     marginRight: theme.spacing(10),
@@ -26,8 +36,8 @@ const HeadingTypography = styled(Typography)(({ theme }) => ({
   },
 }))
 
-const FileUploaderSingle = ({ setData }) => {
-  const [files, setFiles] = useState([])
+const FileUploaderSingle = ({ setData }: Props) => {
+  const [files, setFiles] = useState<File[]>([])
 
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
     multiple: false,
@@ -46,13 +56,13 @@ const FileUploaderSingle = ({ setData }) => {
     },
   })
 
-  const img = files.map((file) => (
+  const img = files.map((file: FileProp) => (
     <img
       width="300"
       key={file.name}
       alt={file.name}
       className="single-file-image"
-      src={URL.createObjectURL(file)}
+      src={URL.createObjectURL(file as any)}
     />
   ))
 
