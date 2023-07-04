@@ -30,9 +30,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx}\"",
-    "lint": "eslint --fix \"src/**/*.{ts,tsx,js,jsx}\"",
-    "docker": "docker build --no-cache --rm -f Dockerfile -t aiaracorp1/aiara-cms-template-js:latest .",
-    "docker-push": "docker push aiaracorp1/aiara-cms-template-js:latest"
+    "lint": "eslint --fix \"src/**/*.{ts,tsx,js,jsx}\""
   },
   "eslintConfig": {
     "extends": [
